@@ -15,36 +15,19 @@
  * Return: Number of characters print 
  */
 
-int handle_write_char(char character, char *buffer, int flags,
-		int width, int precision, int size)
+
+int print_char(va_list parames, char *buffer[], int format_flags,
+		int field_width, int output_precision, int data_size)
 {
 	buffer = output_buffer;
 	flags = format_flags;
 	width = field_width;
 	precision = output_precision;
 	size = data_size;
-	int chars_printed = 0;
-	if (format_flags & F_MINUS)
-	{
-		chars_printed += write(1, &character, 1);
-	} else
-	{
-		if (field_width > 1)
-		{
-			chars_printed += write(1, " ", field_width - 1);
-		}
-		chars_printed += write(1, &character, 1);
-	}
-	return (chars_printed);
-}
 
-
-int print_char(va_list parameters, char *output_buffer, int format_flags,
-		int field_width, int output_precision, int data_size)
-{
 	char character = va_arg(parameters, int);
-	int chars_printed = handle_write_char(character, output_buffer, format_flags,
-			field_width, output_precision, data_size);
+	int chars_printed = handle_write_char(character, buffer, flags,
+				width, precision, size);
 	
 	return (chars_printed);
 }
@@ -61,9 +44,12 @@ int print_char(va_list parameters, char *output_buffer, int format_flags,
  * Return: Number of Characters printed
  */
 
-int print_string(va_list parameters, char *buffer[], int flags, 
+int print_string(va_list parames, char buffer[], int flags, 
 		int width, int precision, int size)
 {
+	int output_length = 0;
+	int = y;
+	char *string = va_arg(parames, char *);
 	buffer = output_buffer;
 	flags = format_flags;
 	width = field_width;
@@ -72,44 +58,38 @@ int print_string(va_list parameters, char *buffer[], int flags,
 	UNUSED(buffer);
 	UNUSED(flags);
 	UNUSED(width);
-	UNUSED(precision);
 	UNUSED(size);
-	int output_string_length = 0, y;
-	char *string = va_arg(parameters, char *);
-
-		
-		if (string == NULL)
-		{
-			string = "(null)";
-		}
-		output_string_length = strlen(string);
-
-			if (output_precision < 0)
-			{
-				output_precision = output_string_length;
-			}		
-
-		if (field_width > output_string_length)
-		{
-			y = 0;
-			do {
-				if (format_flags & F_MINUS)
-				{
-					write(1, &string[y], 1);
-				} else 
-				{
-					write(1, " ", 1);
-				}
-				y++;
-			} while (y < field_width - output_string_length);
-
-			if (format_flags & F_MINUS)
-			{
-				write(1, &string[output_string_length], strlen(string) - output_string_length);
-			}
-			return (field_width);
-		}
-		return write(1, string, output_precision);
+if (string == NULL)
+{
+	string = "(null)";
+	if (precision >= 6)
+		string = "    ";
+}
+y = string[0];
+do {
+	output_length++;
+	y = string[output_length];
+} while (y != '\0');
+if (precision >= 0)
+	output_length = min(precision, output_length);
+	if (field_width > output_length)
+{
+	if (flags & F_MINUS)
+	{
+		wriete(1, &string[0], output_length);
+		for (y = field_width - output_length; y > 0; y--)
+			write(1, " ", 1);
+		return (field_width);
+	}
+	else
+	{
+		for (y = field_width - output_length; y > 0; y--)
+			write(1, " ", 1);
+		write(1 &string[0], output_length);
+		return (field_width);
+	}
+}
+return (write(1, string, output_length));
 }
 /**
  * print_percent - Refers To the printed teh percentage sign
@@ -122,9 +102,14 @@ int print_string(va_list parameters, char *buffer[], int flags,
  * ReTURN:refers to the numbers of characters that printed
  */
 
-int print_percent(va_list parameters, char output_buffer[], int format_flags, int field_width,
-		int output_precision, int data_size)
+int print_percent(va_list parames, char buffer[], int flags, int width,
+		int precision, int size)
 {
+	buffer = output_buffer;
+	flags = format_flags;
+	width = field_width;
+	precision = output_precision;
+	size = data_size;
 	UNUSED(parameters);
 	UNSUED(output_buffer);
 	UNUSED(field_width);

@@ -22,5 +22,7 @@ int print_string(va_list parames, char *buffer[], int flags,
 int print_percent(va_list parames, char buffer[], int flags,
 		int width, int precision, int size);
 
+void print_int_formatter(int num, char *str);
+
 
 #endif /* MAIN_H */

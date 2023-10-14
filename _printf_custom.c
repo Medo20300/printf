@@ -20,15 +20,18 @@ int _printf(const char *format, ...)
 
 	while (*format != '\0')
 	{
-		if (*format == '%' && format[1] == 'd')
+		if (*format == '%' && (format[1] == 'd' || format[1] == 'i'))
 		{
 			int num = va_arg(args, int);
+			str[12];
 			print_int_formatted(num, format);
+			format++;
 		}
-		if (*format == '%' && format[1] == 'i')
+		else
 		{
-			int integer = va_arg(args, int);
+			_putchar(*format);
 		}
+		format++;
 		if (*format == '%' && format[1] == 'c')
 		{
 			char ch = va_arg(args, int);
@@ -42,3 +45,6 @@ int _printf(const char *format, ...)
 
 		}
 	}
+
+	va_end(args);
+}

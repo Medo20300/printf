@@ -13,7 +13,7 @@
 
 /*** prototypes for the print function ***/
 
-int print_char(va_list parames, char *buffer[], int flags, int width,
+int print_char(char *buffer[], int flags, int width,
 		int precision, int size);
 
 int print_string(va_list parames, char *buffer[], int flags,

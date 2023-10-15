@@ -24,12 +24,12 @@ int _printf(const char *format, ...)
 		{
 			int num = va_arg(args, int);
 			str[12];
-			print_int_formatted(num, format);
+			print_int_formatter(num, format);
 			format++;
 		}
 		else
 		{
-			_putchar(*format);
+			putchar(*format);
 		}
 		format++;
 		if (*format == '%' && format[1] == 'c')

@@ -8,7 +8,7 @@
  * Return: success when return 1.
  */
 
-int print_char(ch)
+int print_char(char ch)
 {
 	return (putchar(ch));
 }
@@ -41,8 +41,8 @@ return (length_of_string);
 
 int print_percent(va_list args)
 {
-	char *string;
-	string = '%';
+	char *string = (char *) '%';
+	
 	if (va_arg(args, int) == *string)
 	{
 		return (*string);

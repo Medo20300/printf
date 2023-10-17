@@ -23,9 +23,9 @@ int _printf(const char *format, ...)
 		if (*format == '%' && (format[1] == 'd' || format[1] == 'i'))
 		{
 			int num = va_arg(args, int);
-			str[12];
-			print_int_formatter(num, format);
-			format++;
+			
+			print_int_formatter(num);
+			format += 2; 
 		}
 		else
 		{
@@ -35,16 +35,20 @@ int _printf(const char *format, ...)
 		if (*format == '%' && format[1] == 'c')
 		{
 			char ch = va_arg(args, int);
+			putchar(ch);
 		}
 		if (*format == '%' && format[1] == 's')
 		{
-			char *str = va_arg(args, char *);
+			char *str = va_arg(args, char *);;
+			puts(str);
 		}
 		if (*format == '%' && format[1] == '%')
 		{
+			putchar('%');
 
 		}
 	}
 
 	va_end(args);
+	return (0);
 }

@@ -1,6 +1,9 @@
 #include "main.h"
 #include <stdarg.h>
 
+
+int print_int_formatter(int n);
+
 /**
  * int _printf_custom - that function supports formats
  * @va_list : start variable arguments lists
@@ -9,57 +12,59 @@
  * Return : number of character printedd 
  */
 
+
 int _printf_custom(const char *format, ...)
 {
+	char *str = NULL;
+	int y = 0;
+	int counter = 0;
 	va_list args;
 	va_start(args, format);
-	int counter = 0;
+		
+		
+
 		while (*format != '\0')
 		{
 			if (*format == '%')
 			{
-				if (format[1] == 'd' || format[1] == 'i')
+				switch (format[1])
 				{
-					int num = va_arg(args, int);
-					counter += print_int_formatter(num);
-					format++;
-				}
-				else if (format[1] == 'c')
-				{
-					char ch = va_arg(args, int);
-					counter += print_char(ch);
-					format += 2;
-					countinue;
-					return (1);
-				}
-				else if (format[1] == 's')
-				{
-					char *str = va_arg(arg, char *);
-					int y = 0;
-					while (str[y] != '\0')
-					{
-						counter += print_char(str[y++]);
+					case 'd':
+					case 'i':
+						counter += print_int_formatter(va_arg(args, int));
+						format += 2;
+						break;
+					case 'c':
+						counter += print_char(va_arg(args, int));
+						format += 2;
+						break;
+					case 's':
+					
+						str = va_arg(args, char *);
+					if (str != NULL)
+					{	
+						while (str[y] != '\0')
+						{
+							counter += print_char(str[y++]);
+						}
 					}
-					format++;
+						format++;
+						break;
+					case '%':
+						counter += print_char('%');
+						format++;
+						break;
+					default:
+						counter += print_char(format[0]);
+						format++;
+						break;
 				}
-				else if (format[1] == '%')
-				{
-					counter += print_char('%');
-					format++;
-				}
-				else 
-					counter += print_char(format[0]);
-				format++;
-				continue;
 			}
-			format++;
+			else 
+			{
+				counter += print_char(format[0]);
+				format++;
+			}
 		}
-		else 
-		{
-			counter += print_char(format[0]);
-			format++;
+			return (counter);
 		}
-}
-va_end(args);
-return (counter);
-}

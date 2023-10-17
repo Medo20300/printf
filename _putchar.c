@@ -1,6 +1,6 @@
 #include "main.h"
 
-
+int buffer(char c);
 /**
  * _putchar - write the char to stdout.
  * @c:the char To printed.

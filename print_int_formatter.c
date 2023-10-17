@@ -9,6 +9,8 @@
  */
 int print_int_formatter(int num)
 {
+	int buffer_index = 0;
+	char buffer[1024];
 	int i = 0, j, is_negative = 0;
 	int len, total_len;
 	char str[1024];
@@ -53,8 +55,7 @@ int print_int_formatter(int num)
 	}
 
 	j = 0;
-	char buffer[1024];
-	int buffer_index = 0;
+	
 
 	while (str[j] != '\0')
 	{

@@ -64,5 +64,5 @@ int print_int_formatter(int num)
 	total_len = _puts(buffer);
 
 	fflush(stdout);
-	return (total_len)
+	return (total_len);
 }

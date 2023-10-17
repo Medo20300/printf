@@ -1,7 +1,6 @@
 #include "main.h"
 
 
-
 /**
  * print_char - print a characters
  * @argument:avariable arguments lists
@@ -9,78 +8,29 @@
  * Return: success when return 1.
  */
 
-
-int print_char(char buffer[], int flags, int width, int precision, int size)
+int print_char(ch)
 {
-	int total_count = 0;
-	int y = 0;
-	do
-	{
-		char c = buffer[y];
-		total_count += handle_write_char(c, buffer, flags, width, precision, size);
-		y++;
-	}
-	while (y < size);
-	return total_count;
+	return (putchar(ch));
 }
 
 /**
  * print_string - prints agroup of the Strings
- * @argument:a variable argument list.
+ * @arguments:a variable argument list.
+ *
  * Return: Number of Characters printed (string lengths).
  */
 
-int print_string(va_list arguments, char buffer[], int flags, int width,
-		int precision, int size)
+int print_string(va_list arguments)
 {
-	UNUSED(buffer);
-	UNUSED(size);
-int string_length= 0;
-int y;
-char *string = va_arg(arguments, char *);
-if (string == NULL)
-{
-	string = "(null)";
-if (precision >= 6)
-	string = "     ";
+	char *pointer;
+int length_of_string;
+pointer = va_arg(arguments, char*);
+for (length_of_string = 0; pointer[length_of_string] != '\0'; length_of_string++)
+{ 
+	putchar(pointer[length_of_string]);
 }
-do
-{
-	string_length++;
-} while (string[string_length] != '\0');
-if (precision >= 0 && precision < string_length)
-	string_length = precision;
-	switch (width > string_length)
-{
-	case 1:
-		if (flags & F_MINUS)
-		{
-			write(1, &string[0], string_length);
-			y = width - string_length;
-			while (y > 0)
-			{
-				write(1, " ",1);
-				y--;
-			}
-			return (width);
-		}
-		else
-		{
-			y = width - string_length;
-			while (y > 0)
-			{
-				write(1, " ", 1);
-				y--;
-			}
-			write(1, &string[0], string_length);
-			return (width);
-		}
-		break;
-	default:
-		return (write(1, string, string_length));
+return (length_of_string);
 }
-	}
-				
 				
 
 /**
@@ -89,7 +39,7 @@ if (precision >= 0 && precision < string_length)
  * Return: refers to the numbers of characters that printed
  */
 
-int print_percent(int parames, ...)
+int print_percent(va_list args, ...)
 {
 	char *string; 
 		int y;

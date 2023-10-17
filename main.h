@@ -10,40 +10,28 @@
 /** flags  ***/
 
 #define F_MINUS 1
+#define F_PLUSE 2
+#define F_ZERO 4
+#define F_HASH 8
+#define F_SPACE 16
 
+/**Size **/ 
+#define S_LONG 2
+#define S_SHORT 1
 
 /*** prototypes for the print function ***/
 
-int print_char(char buffer[], int flags, int width, int precision,
-		int size);
+int print_char(char ch);
 
-int print_string(va_list arguments, char buffer[], int flags, int width, int precision,
-		int size);
+int print_string(va_list arguments);
+
 int print_percent(int parames, ...);
 
-void print_int_formatter(int num, char *str);
+int print_int_formatter(int num);
 
 int _printf(const char *, ...);
 
-/*** print_handle_arguments.c****/
-int handle(const char *, va_list);
-int percent_handle(const char *, va_list, int *);
-
-
-/*** printer **/
-
-int print_string(va_list);
-int print_integer(va_list);
-int print_rot(va_list);
-int print_octal(va_list);
-int print_hexadecimal_upp(va_list);
-int print_rev_string(va_list);
-int print_char(va_list);
-int print_binary(va_list);
-int print_unsigned(va_list);
-int print_hexadecimal_low(va_list);
-int print_pointer(va_list);
-
+int _printf_custom(const char *format, ...);
 /**
  * struct_formats- struct
  * @type: struct formatss

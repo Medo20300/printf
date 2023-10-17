@@ -1,9 +1,14 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-int print_char(char c);
 
-<<<<<<< HEAD
+#include <stdio.h>
+#include <stdarg.h>
+#include <string.h>
+#include <unistd.h>
+#include <stdlib.h>
+int print_char(ch);
+
 #define F_MINUS 1
 #define F_PLUSE 2
 #define F_ZERO 4
@@ -16,7 +21,7 @@ int print_char(char c);
 
 /*** prototypes for the print function ***/
 
-int print_char(char ch);
+
 
 int print_string(va_list arguments);
 
@@ -38,13 +43,12 @@ typedef struct _format
 	int (*f)(va_list);
 } format;
 
-=======
 int print_int_formatter(int num);
 
 int _printf_custom(const char *, ...);
 
-int _puts(cahr *str);
->>>>>>> 6227cf996cda2f98f202bbc4ab1c890fef3b7200
+int _puts(char *str);
+
 
 int _putchar(char c);
 	

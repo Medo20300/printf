@@ -1,15 +1,17 @@
 #include "main.h"
 #include <unistd.h>
+#include <limits.h>
 /**
  * print_int_formatter - Converts and int to string and prints it
  * with the formatter string.
  * @num: The number to be converted and printed
  * @str: An array of characters to store the string
  */
-void print_int_formatter(int num, char *str)
+int print_int_formatter(int num)
 {
 	int i = 0, j, is_negative = 0;
-	int len;
+	int len, total_len;
+	char str[1024];
 
 	if (num == 0)
 	{
@@ -17,13 +19,13 @@ void print_int_formatter(int num, char *str)
 		str[i] = '\0';
 	}
 
-	if (num == INT_MAX)
+	if (num == INT_MIN)
 	{
 		str[i++] = '8';
 		num = '-' + (num / 10);
 	}
 
-	if (num < 0 && num != MIN_INT)
+	if (num < 0 && num != INT_MIN)
 	{
 		is_negative = 1;
 		num = -num;
@@ -59,12 +61,8 @@ void print_int_formatter(int num, char *str)
 		buffer[buffer_index++] = str[j++];
 	}
 	buffer[buffer_index] = '\0';
-
-	int k;
-	for (k = 0; k < buffer_index; k++)
-	{
-		_putchar(buffer[k];
-	}
+	total_len = _puts(buffer);
 
 	fflush(stdout);
+	return (total_len)
 }

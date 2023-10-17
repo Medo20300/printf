@@ -39,22 +39,4 @@ return (length_of_string);
  * Return: refers to the numbers of characters that printed
  */
 
-int print_percent(va_list args, ...)
-{
-	char *string; 
-		int y;
-	va_list args;
-	va_start(args, parames);
-		string = "%";
-		do
-		{
-			if (va_arg(args, int) == *string)
-			{
-				write(1, string, 1);
-			return (0);
-		}
-} 
-		while (++y < parames);               
-			return (0);
-}
 

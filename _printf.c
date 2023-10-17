@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <stdarg.h>
 
 /**
  * int _printf_custom - that function supports formats
@@ -9,14 +9,11 @@
  * Return : number of character printedd 
  */
 
-
-
-
 int _printf_custom(const char *format, ...)
 {
 	va_list args;
 	va_start(args, format);
-	int counter =0;
+	int counter = 0;
 		while (*format != '\0')
 		{
 			if (*format == '%')
@@ -31,9 +28,9 @@ int _printf_custom(const char *format, ...)
 				{
 					char ch = va_arg(args, int);
 					counter += print_char(ch);
-					format +=2;
+					format += 2;
 					countinue;
-					return 1;
+					return (1);
 				}
 				else if (format[1] == 's')
 				{

@@ -2,6 +2,7 @@
 #define MAIN_H
 
 
+<<<<<<< HEAD
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
@@ -27,10 +28,13 @@ int print_string(va_list arguments);
 
 int print_percent(int parames, ...);
 
+=======
+>>>>>>> cac1bc18b9c254e042a05d7dd0061ceb6b6ddd89
 int print_int_formatter(int num);
 
 int _printf(const char *, ...);
 
+<<<<<<< HEAD
 int _printf_custom(const char *format, ...);
 /**
  * struct_formats- struct
@@ -49,6 +53,9 @@ int _printf_custom(const char *, ...);
 
 int _puts(char *str);
 
+=======
+int _puts(cahr *str);
+>>>>>>> cac1bc18b9c254e042a05d7dd0061ceb6b6ddd89
 
 int _putchar(char c);
 	

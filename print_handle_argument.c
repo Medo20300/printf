@@ -59,11 +59,11 @@ int percent_handle(const char *string, va_list arguments, int *index)
 		};
 		*index = *index +;
 		if (string[*index] =='\0')
-			return (-);
+			return (-1);
 		if (string[*index] == '%')
 		{
-			putchar('%')
-				return ();
+			putchar('%');
+				return (0);
 		}
 		if (string[*index] == 's')
 		{

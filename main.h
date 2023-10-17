@@ -14,9 +14,11 @@
 
 /*** prototypes for the print function ***/
 
-int print_char(va_list argument);
+int print_char(char buffer[], int flags, int width, int precision,
+		int size);
 
-int print_string(va_list argument);
+int print_string(va_list arguments, char buffer[], int flags, int width, int precision,
+		int size);
 int print_percent(int parames, ...);
 
 void print_int_formatter(int num, char *str);

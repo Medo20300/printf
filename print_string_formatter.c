@@ -39,4 +39,13 @@ return (length_of_string);
  * Return: refers to the numbers of characters that printed
  */
 
-
+int print_percent(va_list args)
+{
+	char *string;
+	string = '%';
+	if (va_arg(args, int) == *string)
+	{
+		return (*string);
+	}
+	return (*string);
+}

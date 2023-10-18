@@ -20,6 +20,8 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
+			if (format[1] != '\0')
+			{
 				if (format[1] == 'd' || format[1] == 'i')
 				{
 					int num = va_arg(args, int);
@@ -60,6 +62,9 @@ int _printf(const char *format, ...)
 					continue;
 				}
 				format++;
+			}
+			else
+				return (-1);
 		}
 		else
 		{

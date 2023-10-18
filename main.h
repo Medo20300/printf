@@ -1,5 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
+
+extern int error;
+
 int print_char(char ch);
 
 int print_int_formatter(int num);

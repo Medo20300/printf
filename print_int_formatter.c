@@ -1,6 +1,7 @@
 #include "main.h"
 #include <unistd.h>
 #include <limits.h>
+#include <stdio.h>
 /**
  * print_int_formatter - Converts and int to string and prints it
  * with the formatter string.

@@ -1,6 +1,4 @@
-#include "main.h"
-
-int buffer(char c);
+#include <unistd.h>
 /**
  * _putchar - write the char to stdout.
  * @c:the char To printed.
@@ -10,32 +8,5 @@ int buffer(char c);
 
 int _putchar(char c)
 {
-	return (buffer(c));
-}
-
-/**
- * buffer - keep the char in a buff
- * @c: that characters
- *
- * Return: 1
- */
-int buffer(char c)
-{
-	static char buffering[1024];
-	static int y;
-if (c == -1)
-{
-	write(1, buffering, y);
-y= 0;
-}
- else if (y == 1024)
-{
-	write(1, buffering, y);
-		y = 0;
-} 
-else 
-{
-	buffering[y++] = c;
-}
-return (1);
+	return(write(1, &c, 1));
 }

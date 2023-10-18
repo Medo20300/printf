@@ -22,8 +22,6 @@ int print_char(char ch);
 
 /*** prototypes for the print function ***/
 
-
-
 int print_string(va_list arguments);
 
 int print_percent(va_list args);
@@ -34,7 +32,7 @@ int print_int_formatter(int num);
 int _printf(const char *, ...);
 
 
-int _printf_custom(const char *format, ...);
+int _printf(const char *format, ...);
 
 int print_int_formatter(int num);
 
